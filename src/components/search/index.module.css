@@ -5,7 +5,6 @@
   height: 200px;
   margin: 0 auto;
   padding: 10px 20px;
-  text-decoration: none;
   font-size: 25px;
   font-family: "M PLUS 1p", sans-serif;
   color: rgb(124, 124, 124);
@@ -22,4 +21,8 @@
 
 .container:hover {
   background-color: rgb(243, 243, 243);
+}
+
+.cafe {
+  color: #000;
 }

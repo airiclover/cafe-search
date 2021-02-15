@@ -5,12 +5,12 @@ import styles from "./index.module.css";
 export function Search() {
   return (
     <>
-      <Link href="/cafe-list">
+      <Link href="/cafePage">
         <a className={styles.container}>
           <div className={styles.btnMsg}>
             近くの
             <br />
-            カフェ
+            <span className={styles.cafe}>カフェ</span>
             <br />
             を探す
           </div>

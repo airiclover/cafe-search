@@ -1,19 +1,18 @@
 import Head from "next/head";
-import { Layout } from "../layouts/index";
+import { MainLayout } from "../layouts/main/index";
 import { Top } from "../components/top/index";
 import { Bottom } from "../components/bottom/index";
 import { Search } from "../components/search/index";
 
 export default function Home() {
   return (
-    <Layout>
+    <MainLayout>
       <Head>
-        <title>Recipe</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>cafe-search</title>
       </Head>
       <Top />
       <Search />
       <Bottom />
-    </Layout>
+    </MainLayout>
   );
 }
