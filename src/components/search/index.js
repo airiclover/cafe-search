@@ -7,7 +7,7 @@ export function Search() {
     <>
       <Link href="/cafe-list">
         <a className={styles.container}>
-          <div>
+          <div className={styles.btnMsg}>
             近くの
             <br />
             カフェ

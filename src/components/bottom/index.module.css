@@ -1,5 +1,10 @@
 .container {
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: -1px;
+  font-family:  "arial black", sans-serif;
+  font-size: 30px;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-right: 15px;
 }

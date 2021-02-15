@@ -6,14 +6,14 @@ export function Bottom() {
     <>
       <div className={styles.container}>
         <Image
-          // src="/img/footprint.png"
-          src="/img/footprint0.png"
+          src="/img/arrow-up.svg"
           alt="cat logo"
           loading="eager"
-          width={230}
-          height={230}
+          width={35}
+          height={35}
           priority
         />
+        <p>touch me!</p>
       </div>
     </>
   );

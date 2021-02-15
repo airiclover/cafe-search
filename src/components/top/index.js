@@ -16,8 +16,8 @@ export function Top() {
           src="/img/cat.png"
           alt="cat logo"
           loading="eager"
-          width={70}
-          height={140}
+          width={80}
+          height={130}
           priority
         />
       </div>

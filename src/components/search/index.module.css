@@ -9,8 +9,17 @@
   font-size: 25px;
   font-family: "M PLUS 1p", sans-serif;
   color: rgb(124, 124, 124);
-  border: 1px solid rgb(173, 173, 173);
+  border: 3px solid rgb(163, 163, 163);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.btnMsg {
+  padding-left: 8px;
+}
+
+.container:hover {
+  background-color: rgb(243, 243, 243);
 }
