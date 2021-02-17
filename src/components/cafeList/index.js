@@ -1,10 +1,27 @@
+import React,{ useState, useEffect} from 'react';
 import Image from "next/image";
 import styles from "./index.module.css";
 
 export default function CafeList() {
+
+
+
+  // memo
+  // 親からprops受け取る
+  // API叩く
+  // useStateを定義、useEffectを利用
+  // して上記実装する
+
+
   return (
     <>
-      <a href="/" className={styles.container} r>
+      <a
+        href="/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.container}
+        r
+      >
         <Image
           src="/img/cat.png"
           alt="image"
@@ -13,7 +30,7 @@ export default function CafeList() {
           height={140}
           priority
         />
-        <div  className={styles.infoWrap}>
+        <div className={styles.infoWrap}>
           <h2 className={styles.shopName}>
             猫カフェ猫カフェ猫カフェ猫カフェ猫カフェ猫カフェ
           </h2>

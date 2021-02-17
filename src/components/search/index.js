@@ -2,11 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.css";
 
-export function Search() {
+export  const Search = (props) => {
+  const {getLocationBtn} = props
+
   return (
     <>
       <Link href="/cafePage">
-        <a className={styles.container}>
+        <a className={styles.container} onClick={getLocationBtn}>
           <div className={styles.btnMsg}>
             近くの
             <br />

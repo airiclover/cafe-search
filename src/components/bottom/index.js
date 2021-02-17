@@ -1,7 +1,11 @@
 import styles from "./index.module.css";
 import Image from "next/image";
 
+
+
+
 export function Bottom() {
+
   return (
     <>
       <div className={styles.container}>
