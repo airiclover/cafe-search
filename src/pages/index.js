@@ -9,14 +9,12 @@ const getLocation = () => {
   navigator.geolocation.getCurrentPosition((position) => {
     const { latitude, longitude } = position.coords;
     console.log(latitude, longitude);
-  });
+  }, console.log("error"));
 };
 
 export const getStaticProps = async () => {
-  // 緯度
-  const LAT = 35.66922;
-  // 経度
-  const LNG = 139.761457;
+  const LAT = 35.66922; // 緯度
+  const LNG = 139.761457; // 経度
 
   const res = await fetch(
     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${LAT}&lng=${LNG}&genre=G014&format=json`
