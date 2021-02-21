@@ -4,11 +4,8 @@ import styles from "../../styles/list.module.css";
 export async function getStaticProps({ params }) {
   const id = params.list;
 
-  const LAT = 35.66922; // 緯度
-  const LNG = 139.761457; // 経度
-
   const res = await fetch(
-    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${LAT}&lng=${LNG}&genre=G014&id=${id}&format=json`
+    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&id=${id}&format=json`
   );
 
   const json = await res.json();
@@ -17,8 +14,8 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const LAT = 35.66922; // 緯度
-  const LNG = 139.761457; // 経度
+  const LAT = 35.66922;
+  const LNG = 139.761457;
 
   const res = await fetch(
     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${LAT}&lng=${LNG}&genre=G014&format=json`

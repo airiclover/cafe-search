@@ -6,15 +6,23 @@ import { Search } from "../components/search/index";
 import { CafeLists } from "../components/cafeLists/index";
 
 const getLocation = () => {
+  // const aaa = 111.11;
+  // const bbb = 222.345;
+  // return { aaa, bbb };
   navigator.geolocation.getCurrentPosition((position) => {
-    const { latitude, longitude } = position.coords;
-    console.log(latitude, longitude);
+    // const { latitude, longitude } = position.coords;
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    console.log(lat, lng);
   }, console.log("error"));
 };
 
 export const getStaticProps = async () => {
-  const LAT = 35.66922; // 緯度
-  const LNG = 139.761457; // 経度
+  // async function getApi(latitude, longitude) {
+  // const LAT = latitude;
+  // const LNG = longitude;
+  const LAT = 35.66922;
+  const LNG = 139.761457;
 
   const res = await fetch(
     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${LAT}&lng=${LNG}&genre=G014&format=json`
