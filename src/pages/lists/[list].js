@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ListLayout } from "../../layouts/list/index";
 import styles from "../../styles/list.module.css";
 
@@ -37,8 +38,22 @@ export default function List(lists) {
     <>
       <ListLayout>
         <img src={lists.lists[0].photo.pc.l} alt="img" className={styles.img} />
-        <h1>POST(投稿){lists.lists[0].id}</h1>
-        <h2>{lists.lists[0].name}</h2>
+        <h1 className={styles.shopName}>{lists.lists[0].name}</h1>
+        <div className={styles.accessWrap}>
+          <Image
+            src="/img/map-min-pin.svg"
+            alt="map"
+            loading="eager"
+            width={10}
+            height={10}
+            priority
+          />
+          <p className={styles.access}>{lists.lists[0].mobile_access}</p>
+        </div>
+        <p className={styles.title}>【営業時間】</p>
+        <p className={styles.common}>{lists.lists[0].open}</p>
+        <p className={styles.title}>【住所】</p>
+        <p className={styles.common}>{lists.lists[0].address}</p>
       </ListLayout>
     </>
   );

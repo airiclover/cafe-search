@@ -3,3 +3,30 @@
   height: 260px;
   object-fit: cover;
 }
+
+.shopName {
+  font-size: 18px;
+  display: inline-block;
+}
+
+.accessWrap {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px;
+}
+
+.access {
+  font-size: 12px;
+  padding-left: 4px;
+  margin: 0;
+}
+
+.title {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.common {
+  font-size: 12px;
+  margin: 0;
+}
