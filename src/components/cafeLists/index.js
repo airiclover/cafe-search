@@ -5,7 +5,7 @@ import Link from "next/link";
 export function CafeLists(props) {
   const { datasLists } = props;
 
-  // console.log(datasLists);
+  console.log(datasLists);
 
   return (
     <>
