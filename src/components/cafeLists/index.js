@@ -5,8 +5,6 @@ import Link from "next/link";
 export function CafeLists(props) {
   const { datasLists } = props;
 
-  console.log(datasLists);
-
   return (
     <>
       {datasLists.map((datasList, index) => {
