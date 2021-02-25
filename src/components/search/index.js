@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./index.module.css";
+import { AAA } from "../../pages/index";
 
 export const Search = (props) => {
   const { getLocationBtn } = props;
