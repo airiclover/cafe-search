@@ -1,93 +1,63 @@
-// import Head from "next/head";
-// import { MainLayout } from "../layouts/main/index";
-// import { Top } from "../components/top/index";
-// import { Bottom } from "../components/bottom/index";
-// import { Search } from "../components/search/index";
-// import { CafeLists } from "../components/cafeLists/index";
+// ホットペッパーAPIは、サーバー側でのみデータフェッチ可。
+// （クライアント側（JavaScriptによるブラウザ側）では不可のため、CORSによりブロックされてしまう。）
+// =====❗️やりたいこと❗️=====
+// ブラウザで現在地取得
+// 👉値（緯度・軽度）をサーバーへ送る
+// 👉サーバーからAPIへリクエストを送る
+// 👉返り値を受け取る
+// 👉ブラウザで表示
 
-// // const getLocation = () => {
-// //   navigator.geolocation.getCurrentPosition((position) => {
-// //     // const { latitude, longitude } = position.coords;
-// //     const lat = position.coords.latitude;
-// //     const lng = position.coords.longitude;
-// //     console.log(lat, lng);
-// //   }, console.log("error"));
-// // };
+// =====❓どうするか❓=====
+// クライアントとサーバー間でデータ受け渡しをすれば解決できるが、サーバー側（node.js）の知識がまだない...(´；ω；`)
+// ブラウザから値取得⏩戻り値を受け取るという流れのため,SSR・SSG・ISR該当せず
+// 👇最終手段👇
+// ・CORS-anywhere使う？👈Github:issue#301にて、"If possible, try to avoid the need for a proxy at all. "とあるため使わない方向に。
+// ・JSONPでCORSエラー回避する？
 
-// export const getServerSideProps = async () => {
-//   // export const getStaticProps = async () => {
-//   // async function getApi() {
-//   // const LAT = latitude;
-//   // const LNG = longitude;
-//   const LAT = 35.66922;
-//   const LNG = 139.761457;
-
-//   const res = await fetch(
-//     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${LAT}&lng=${LNG}&genre=G014&format=json`
-//   );
-//   const json = await res.json();
-//   const dates = json.results.shop;
-//   return { props: { dates } };
-// };
-
-// export default function Home(props) {
-//   // console.log(props.dates);
-
-//   return (
-//     <MainLayout>
-//       <Head>
-//         <title>cafe-search</title>
-//       </Head>
-//       <Top />
-//       {/* <Search getLocationBtn={getLocation} /> */}
-//       <Search />
-//       <Bottom />
-//       <CafeLists datasLists={props.dates} />
-//     </MainLayout>
-//   );
-// }
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import axiosJsonpAdapter from "axios-jsonp";
 import Head from "next/head";
 import { MainLayout } from "../layouts/main/index";
 import { Top } from "../components/top/index";
 import { Bottom } from "../components/bottom/index";
 import { Search } from "../components/search/index";
 import { CafeLists } from "../components/cafeLists/index";
-import React, { useState, useEffect } from "react";
-
-export const lat = 35.66922;
-export const lng = 139.761457;
-
-const getLocation = () => {
-  navigator.geolocation.getCurrentPosition((position) => {
-    // const { latitude, longitude } = position.coords;
-    const getLat = position.coords.latitude;
-    const getLng = position.coords.longitude;
-    console.log(getLat, getLng);
-  }, console.log("error"));
-};
 
 export default function Home() {
+  const [location, setLocation] = useState([]);
   const [datas, setDatas] = useState([]);
 
-  // ====================================================
-  // useEffect(() => {
-  //   fetch("/api/apiCafelLists") // ここをProxyしたAPIにする
-  //     .then((r) => r.json())
-  //     .then((data) => {
-  //       setLoc(data);
-  //     });
-  // }, []);
-
-  const getApi = () => {
-    fetch("/api/apiCafelLists")
-      .then((r) => r.json())
-      .then((data) => {
-        setDatas(data);
-      });
+  const getLocation = () => {
+    const onSuccess = (position) =>
+      axios
+        .get(
+          `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${position?.coords?.latitude}&lng=${position?.coords?.longitude}&genre=G014&format=jsonp`,
+          {
+            adapter: axiosJsonpAdapter,
+          }
+        )
+        .then((res) => {
+          const jsonp = res.data;
+          const apiDates = jsonp.results.shop;
+          setDatas(apiDates);
+          console.log(apiDates);
+          // return { props: { dates } };
+          setLocation([
+            position?.coords?.latitude,
+            position?.coords?.longitude,
+          ]);
+        });
+    const onError = (err) => {
+      console.log(err);
+    };
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 60000,
+      maximumAge: 30000,
+    };
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
   };
-
-  // ====================================================
 
   return (
     <MainLayout>
@@ -95,10 +65,10 @@ export default function Home() {
         <title>cafe-search</title>
       </Head>
       <Top />
-      <button onClick={getLocation}>試しgetLocation試し</button>
-      <Search getLocationBtn={getApi} />
+      <Search getLocationBtn={getLocation} />
       <Bottom />
-      {/* <CafeLists datasLists={props.dates} /> */}
+      <h1>{location[0]}</h1>
+      <h1>{location[1]}</h1>
       <CafeLists datasLists={datas} />
     </MainLayout>
   );
