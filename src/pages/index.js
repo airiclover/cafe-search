@@ -1,20 +1,19 @@
-// ホットペッパーAPIは、サーバー側でのみデータフェッチ可。
-// （クライアント側（JavaScriptによるブラウザ側）では不可のため、CORSによりブロックされてしまう。）
+// ・ブラウザから値を取得し、データを受け取るという流れ(データをプリレンダリングする必要がない)のためクライアントサイドレンダリングにて実装
+
+// ・ホットペッパーAPIは、サーバー側でのみデータフェッチ可
+//  （クライアント側（JavaScriptによるブラウザ側）では不可のため、CORSによりブロックされてしまう。）
+// 👉JSONPでCORSエラー回避する
+
 // =====❗️やりたいこと❗️=====
-// ブラウザで現在地取得
+// 👉ブラウザで現在地取得
 // 👉値（緯度・軽度）をサーバーへ送る
 // 👉サーバーからAPIへリクエストを送る
 // 👉返り値を受け取る
 // 👉ブラウザで表示
-
-// =====❓どうするか❓=====
-// クライアントとサーバー間でデータ受け渡しをすれば解決できるが、サーバー側（node.js）の知識がまだない...(´；ω；`)
-// ブラウザから値取得⏩戻り値を受け取るという流れのため,SSR・SSG・ISR該当せず
-// 👇最終手段👇
-// ・CORS-anywhere使う？👈Github:issue#301にて、"If possible, try to avoid the need for a proxy at all. "とあるため使わない方向に。
-// ・JSONPでCORSエラー回避する？
+// =======================
 
 import React, { useState, useEffect } from "react";
+import useSWR from "swr";
 import axios from "axios";
 import axiosJsonpAdapter from "axios-jsonp";
 import Head from "next/head";
@@ -28,10 +27,16 @@ export default function Home() {
   const [location, setLocation] = useState([]);
   const [datas, setDatas] = useState([]);
 
+  useEffect(() => {
+    console.log("ok");
+    getLocation();
+  }, []);
+
   const getLocation = () => {
     const onSuccess = (position) =>
       axios
         .get(
+          // `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=35.669220&lng=139.761457&genre=G014&count=15&format=jsonp`,
           `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${position?.coords?.latitude}&lng=${position?.coords?.longitude}&genre=G014&format=jsonp`,
           {
             adapter: axiosJsonpAdapter,
