@@ -2,11 +2,12 @@ import Image from "next/image";
 import styles from "./index.module.css";
 
 export const Search = (props) => {
-  const { getLocationBtn } = props;
+  const { btnData } = props;
+  // console.log(btnData);
 
   return (
     <>
-      <button className={styles.container} onClick={getLocationBtn}>
+      <button className={styles.container} onClick={btnData}>
         <div className={styles.btnMsg}>
           近くの
           <br />
