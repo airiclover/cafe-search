@@ -1,13 +1,11 @@
 import Image from "next/image";
 import styles from "./index.module.css";
 
-export const Search = (props) => {
-  const { btnData } = props;
-  // console.log(btnData);
-
+export const Search = () => {
   return (
     <>
-      <button className={styles.container} onClick={btnData}>
+      {/* <button className={styles.container} onClick={btnData}> */}
+      <button className={styles.container}>
         <div className={styles.btnMsg}>
           近くの
           <br />

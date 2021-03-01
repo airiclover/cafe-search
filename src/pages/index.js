@@ -24,7 +24,6 @@ import { CafeLists } from "../components/cafeLists/index";
 
 const fetcher = () => {
   // getCurrentPosition()は返り値なしのためPromiseで実装し、resolveで結果を取得する
-  // return new Promise((resolve, reject) => {
   return new Promise((resolve) => {
     const onSuccess = (position) =>
       // jsonpのためaxiosにてデータフェッチ
@@ -53,20 +52,19 @@ const fetcher = () => {
   });
 };
 
-// ===============================
-
 export default function Home() {
-  // =============================
   // 一度取得したデータをクライアント側でキャッシュしてくれるためuseSWRにて実装
   // (ページ遷移後もデータ取得+キャッシュ更新（Focus Revalidation）され、スクロール位置も保存される)
-  const { data: data } = useSWR("default", fetcher);
+  const { data } = useSWR("default", fetcher);
+  // const { data: data } = useSWR("default", fetcher);
+
   return (
     <MainLayout>
       <Head>
         <title>cafe-search</title>
       </Head>
       <Top />
-      {console.log(data)}
+      {/* {console.log(data)} */}
       <Search />
       <Bottom />
       {/* dataが取得できていれば、CafeListsコンポーネントを表示、なければ「loading...」 */}
