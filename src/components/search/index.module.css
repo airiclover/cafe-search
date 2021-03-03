@@ -22,36 +22,9 @@
 
 .container:hover {
   background-color: rgb(243, 243, 243);
+  cursor: pointer;
 }
 
 .cafe {
   color: #000;
 }
-/* @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100&display=swap");
-
-.container {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  font-size: 25px;
-  font-family: "M PLUS 1p", sans-serif;
-  color: rgb(124, 124, 124);
-  border: 3px solid rgb(163, 163, 163);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btnMsg {
-  padding-left: 8px;
-}
-
-.container:hover {
-  background-color: rgb(243, 243, 243);
-}
-
-.cafe {
-  color: #000;
-} */

@@ -11,7 +11,7 @@
 // 👉ブラウザで表示
 // =======================
 
-import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import useSWR from "swr";
 import axios from "axios";
 import axiosJsonpAdapter from "axios-jsonp";
@@ -20,7 +20,8 @@ import { MainLayout } from "../layouts/main/index";
 import { Top } from "../components/top/index";
 import { Bottom } from "../components/bottom/index";
 import { Search } from "../components/search/index";
-import { CafeLists } from "../components/cafeLists/index";
+import { Common } from "../components/common";
+// import { CafeLists } from "../components/cafeLists/index";
 
 const fetcher = () => {
   // getCurrentPosition()は返り値なしのためPromiseで実装し、resolveで結果を取得する
@@ -67,8 +68,14 @@ export default function Home() {
       {/* {console.log(data)} */}
       <Search />
       <Bottom />
+      {/* ============== */}
+      <Link href="/cafePage">
+        <a>〜〜〜特集 page!〜〜〜</a>
+      </Link>
+      {/* ============== */}
       {/* dataが取得できていれば、CafeListsコンポーネントを表示、なければ「loading...」 */}
-      {data ? <CafeLists datasLists={data} /> : "loading..."}
+      {data ? <Common datasLists={data} /> : "loading..."}
+      {/* {data ? <CafeLists datasLists={data} /> : "loading..."} */}
     </MainLayout>
   );
 }
