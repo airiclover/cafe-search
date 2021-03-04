@@ -4,13 +4,13 @@ import Link from "next/link";
 
 export function Common(props) {
   const { datasLists } = props;
-  console.log(datasLists);
 
   return (
     <>
       {datasLists.map((datasList, index) => {
         return (
-          <Link href={`/lists/${datasList.id}`} key={index}>
+          <Link href={`/picup/${datasList.id}`} key={index}>
+            {/* <Link href={`/lists/${datasList.id}`} key={index}> */}
             <a className={styles.container}>
               <div className={styles.accessWrap}>
                 <img

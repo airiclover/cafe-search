@@ -3,8 +3,9 @@ import { Common } from "../components/common";
 
 // export const getStaticProps = async () => {
 export const getStaticProps = async function () {
-  const keywords = ["ゆっくり", "ゆったり", "おしゃれ", "コーヒー"];
-  var key = Math.floor(Math.random() * keywords.length);
+  const keywords = ["ゆっくり"];
+  // const keywords = ["ゆっくり", "ゆったり", "おしゃれ", "コーヒー", "猫"];
+  const key = Math.floor(Math.random() * keywords.length);
   const utf8Key = unescape(encodeURIComponent(keywords[key]));
 
   const res = await fetch(

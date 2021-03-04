@@ -21,7 +21,7 @@ import { Top } from "../components/top/index";
 import { Bottom } from "../components/bottom/index";
 import { Search } from "../components/search/index";
 import { Common } from "../components/common";
-// import { CafeLists } from "../components/cafeLists/index";
+import { CafeLists } from "../components/cafeLists/index";
 
 const fetcher = () => {
   // getCurrentPosition()は返り値なしのためPromiseで実装し、resolveで結果を取得する
@@ -65,17 +65,16 @@ export default function Home() {
         <title>cafe-search</title>
       </Head>
       <Top />
-      {/* {console.log(data)} */}
       <Search />
       <Bottom />
       {/* ============== */}
-      <Link href="/cafePage">
+      <Link href="/picupCafe">
         <a>〜〜〜特集 page!〜〜〜</a>
       </Link>
       {/* ============== */}
       {/* dataが取得できていれば、CafeListsコンポーネントを表示、なければ「loading...」 */}
-      {data ? <Common datasLists={data} /> : "loading..."}
-      {/* {data ? <CafeLists datasLists={data} /> : "loading..."} */}
+      {/* {data ? <Common datasLists={data} /> : "loading..."} */}
+      {data ? <CafeLists datasLists={data} /> : "loading..."}
     </MainLayout>
   );
 }
