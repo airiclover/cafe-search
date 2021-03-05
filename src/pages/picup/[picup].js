@@ -10,27 +10,13 @@ export async function getStaticProps({ params }) {
   );
   const dataListsJson = await res.json();
   const lists = dataListsJson.results.shop;
-  return { props: { lists } };
+  return { props: { lists }, revalidate: 60 * 60 };
 }
 
-export async function getStaticPaths() {
-  const keywords = ["ゆっくり"];
-  // const keywords = ["ゆっくり", "ゆったり", "おしゃれ", "コーヒー", "猫"];
-  const key = Math.floor(Math.random() * keywords.length);
-  const utf8Key = unescape(encodeURIComponent(keywords[key]));
-
-  const res = await fetch(
-    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&genre=G014&keyword=${utf8Key}&count=20&format=json`
-  );
-  const json = await res.json();
-  const datasLists = json.results.shop;
-  const paths = datasLists.map((picup) => `/picup/${picup.id}`);
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
+export const getStaticPaths = async () => ({
+  paths: [],
+  fallback: true,
+});
 
 export default function List(lists) {
   const URL = "https://maps.google.co.jp/maps?output=embed&q=";
