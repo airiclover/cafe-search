@@ -18,10 +18,8 @@ import axiosJsonpAdapter from "axios-jsonp";
 import Head from "next/head";
 import { MainLayout } from "../layouts/main/index";
 import { Top } from "../components/top/index";
-import { Bottom } from "../components/bottom/index";
 import { Search } from "../components/search/index";
-import { Common } from "../components/common";
-import { CafeLists } from "../components/cafeLists/index";
+import { CommonLists } from "../components/common";
 
 const fetcher = () => {
   // getCurrentPosition()は返り値なしのためPromiseで実装し、resolveで結果を取得する
@@ -68,16 +66,13 @@ export default function Home() {
         <title>cafe-search</title>
       </Head>
       <Top />
-      <Search />
-      <Bottom />
-      {/* ============== */}
       <Link href="/picupCafe">
-        <a>〜〜〜特集 page!〜〜〜</a>
+        <a>
+          <Search />
+        </a>
       </Link>
-      {/* ============== */}
-      {/* dataが取得できていれば、CafeListsコンポーネントを表示、なければ「loading...」 */}
-      {/* {data ? <Common datasLists={data} /> : "loading..."} */}
-      {data ? <CafeLists datasLists={data} /> : "loading..."}
+      {/* dataが取得できていれば、CommonListsコンポーネントを表示、なければ「loading...」 */}
+      {data ? <CommonLists datasLists={data} page={"csr"} /> : "loading..."}
     </MainLayout>
   );
 }

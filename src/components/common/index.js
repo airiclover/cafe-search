@@ -2,41 +2,79 @@ import styles from "./index.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-export function Common(props) {
-  const { datasLists } = props;
+export function CommonLists(props) {
+  const { datasLists, page } = props;
+
+  console.log(page);
+  page === "ssg" ? "picup" : "lists";
 
   return (
     <>
-      {datasLists.map((datasList, index) => {
-        return (
-          <Link href={`/picup/${datasList.id}`} key={index}>
-            {/* <Link href={`/lists/${datasList.id}`} key={index}> */}
-            <a className={styles.container}>
-              <div className={styles.accessWrap}>
-                <img
-                  src={datasList.photo.mobile.s}
-                  alt="img"
-                  className={styles.img}
-                />
-                <div className={styles.infWrap}>
-                  <h2 className={styles.shopName}>{datasList.name}</h2>
+      {page === "ssg"
+        ? datasLists.map((datasList, index) => {
+            return (
+              <Link href={`/picup/${datasList.id}`} key={index}>
+                {/* <Link href={`/lists/${datasList.id}`} key={index}> */}
+                <a className={styles.container}>
                   <div className={styles.accessWrap}>
-                    <Image
-                      src="/img/map-min-pin.svg"
-                      alt="map"
-                      loading="eager"
-                      width={10}
-                      height={10}
-                      priority
+                    <img
+                      src={datasList.photo.mobile.s}
+                      alt="img"
+                      className={styles.img}
                     />
-                    <p className={styles.access}>{datasList.mobile_access}</p>
+                    <div className={styles.infWrap}>
+                      <h2 className={styles.shopName}>{datasList.name}</h2>
+                      <div className={styles.accessWrap}>
+                        <Image
+                          src="/img/map-min-pin.svg"
+                          alt="map"
+                          loading="eager"
+                          width={10}
+                          height={10}
+                          priority
+                        />
+                        <p className={styles.access}>
+                          {datasList.mobile_access}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </a>
-          </Link>
-        );
-      })}
+                </a>
+              </Link>
+            );
+          })
+        : datasLists.map((datasList, index) => {
+            return (
+              // <Link href={`/picup/${datasList.id}`} key={index}>
+              <Link href={`/lists/${datasList.id}`} key={index}>
+                <a className={styles.container}>
+                  <div className={styles.accessWrap}>
+                    <img
+                      src={datasList.photo.mobile.s}
+                      alt="img"
+                      className={styles.img}
+                    />
+                    <div className={styles.infWrap}>
+                      <h2 className={styles.shopName}>{datasList.name}</h2>
+                      <div className={styles.accessWrap}>
+                        <Image
+                          src="/img/map-min-pin.svg"
+                          alt="map"
+                          loading="eager"
+                          width={10}
+                          height={10}
+                          priority
+                        />
+                        <p className={styles.access}>
+                          {datasList.mobile_access}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            );
+          })}
     </>
   );
 }
