@@ -59,7 +59,11 @@ export default function NearCafe() {
   return (
     <ListLayout>
       {/* dataが取得できていれば、CommonListsコンポーネントを表示、なければ「loading...」 */}
-      {data ? <CommonLists datasLists={data} page={"lists"} /> : "loading..."}
+      {data ? (
+        <CommonLists datasLists={data} page={"lists"} title={"近くのカフェ"} />
+      ) : (
+        "loading..."
+      )}
     </ListLayout>
   );
 }

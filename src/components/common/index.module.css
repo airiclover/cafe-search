@@ -1,9 +1,22 @@
+.titleWrap {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-top: 3px dotted #000;
+  border-bottom: 3px dotted #000;
+}
+
+.title {
+  font-size: 32px;
+  margin: 0;
+  padding-right: 6px;
+}
+
 .container {
   display: flex;
   margin-top: 8px;
   border: 1px solid rgb(222, 222, 222);
   border-radius: 8px;
-
   color: rgb(30, 30, 30);
   height: 100px;
   background-color: rgb(255, 255, 255);

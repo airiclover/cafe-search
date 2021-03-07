@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ListLayout } from "../layouts/list/index";
 import { CommonLists } from "../components/common";
 
@@ -24,8 +25,11 @@ export default function PicupCafe(props) {
 
   return (
     <ListLayout>
-      <h1>猫カフェピックアップ</h1>
-      <CommonLists datasLists={datasLists} page={"picup"} />
+      <CommonLists
+        datasLists={datasLists}
+        page={"picup"}
+        title={"猫カフェpickup"}
+      />
     </ListLayout>
   );
 }

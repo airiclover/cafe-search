@@ -1,0 +1,43 @@
+.btnWrap {
+  display: inline-block;
+  margin: 70px 40px 40px;
+  padding: 15px 45px;
+  position: relative;
+  background-color: #fff;
+  line-height: 40px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.btnWrap:before,
+.btnWrap:after {
+  position: absolute;
+  content: "";
+  width: 0%;
+  height: 0%;
+  border: 2px solid;
+}
+.btnWrap:before {
+  top: 0;
+  left: 0;
+}
+.btnWrap:after {
+  bottom: 0;
+  right: 0;
+}
+.btnWrap:before,
+.btnWrap:after {
+  border-color: rgb(50, 50, 50);
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  padding-right: 10px;
+}

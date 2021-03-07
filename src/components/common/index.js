@@ -3,12 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function CommonLists(props) {
-  const { datasLists, page } = props;
+  const { datasLists, page, title } = props;
 
   console.log(page);
 
   return (
     <>
+      <div className={styles.titleWrap}>
+        <h1 className={styles.title}>{title}</h1>
+        <Image
+          src="/img/catfot.png"
+          alt="catfot logo"
+          loading="eager"
+          width={35}
+          height={35}
+          priority
+        />
+      </div>
       {datasLists.map((datasList, index) => {
         return (
           <Link href={`/${page}/${datasList.id}`} key={index}>
