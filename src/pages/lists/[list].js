@@ -19,27 +19,51 @@ export default function List(lists) {
   const lng = lists.lists[0].lng;
 
   return (
-    <>
-      <ListLayout>
-        <img src={lists.lists[0].photo.pc.l} alt="img" className={styles.img} />
-        <h1 className={styles.shopName}>{lists.lists[0].name}</h1>
-        <div className={styles.accessWrap}>
+    <ListLayout>
+      <img src={lists.lists[0].photo.pc.l} alt="img" className={styles.img} />
+      <h1 className={styles.shopName}>{lists.lists[0].name}</h1>
+      <div className={styles.titleWrap}>
+        <Image
+          src="/img/map-min-pin.svg"
+          alt="map"
+          loading="eager"
+          width={12}
+          height={12}
+          priority
+        />
+        <p className={styles.commonTitle}>{lists.lists[0].mobile_access}</p>
+      </div>
+
+      <div className={styles.commonWrap}>
+        <div className={styles.titleWrap}>
           <Image
-            src="/img/map-min-pin.svg"
+            src="/img/clock-min.svg"
             alt="map"
             loading="eager"
-            width={10}
-            height={10}
+            width={12}
+            height={12}
             priority
           />
-          <p className={styles.access}>{lists.lists[0].mobile_access}</p>
+          <p className={styles.commonTitle}>open</p>
         </div>
-        <p className={styles.title}>【営業時間】</p>
-        <p className={styles.common}>{lists.lists[0].open}</p>
-        <p className={styles.title}>【住所】</p>
-        <p className={styles.common}>{lists.lists[0].address}</p>
-        <iframe className={styles.iframe} src={`${URL}${lat},${lng}`}></iframe>
-      </ListLayout>
-    </>
+        <p className={styles.data}>{lists.lists[0].open}</p>
+      </div>
+
+      <div className={styles.commonWrap}>
+        <div className={styles.titleWrap}>
+          <Image
+            src="/img/home-min.svg"
+            alt="map"
+            loading="eager"
+            width={12}
+            height={12}
+            priority
+          />
+          <p className={styles.commonTitle}>address</p>
+        </div>
+        <p className={styles.data}>{lists.lists[0].address}</p>
+      </div>
+      <iframe className={styles.iframe} src={`${URL}${lat},${lng}`}></iframe>
+    </ListLayout>
   );
 }

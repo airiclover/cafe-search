@@ -3,9 +3,8 @@ import styles from "./index.module.css";
 
 export const Search = () => {
   return (
-    <>
-      {/* <button className={styles.container} onClick={btnData}> */}
-      <button className={styles.container}>
+    <button className={styles.btn}>
+      <div className={styles.container}>
         <div className={styles.btnMsg}>
           近くの
           <br />
@@ -21,7 +20,7 @@ export const Search = () => {
           height={110}
           priority
         />
-      </button>
-    </>
+      </div>
+    </button>
   );
 };

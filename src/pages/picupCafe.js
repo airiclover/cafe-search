@@ -1,10 +1,8 @@
 import { ListLayout } from "../layouts/list/index";
 import { CommonLists } from "../components/common";
 
-// export const getStaticProps = async () => {
-export const getStaticProps = async function () {
+export const getStaticProps = async () => {
   const keywords = "猫";
-  // const keywords = ["ゆっくり", "ゆったり", "おしゃれ", "コーヒー", "猫"];
   const key = Math.floor(Math.random() * keywords.length);
   const utf8Key = unescape(encodeURIComponent(keywords[key]));
 
@@ -21,17 +19,13 @@ export const getStaticProps = async function () {
   };
 };
 
-const index = (props) => {
+export default function PicupCafe(props) {
   const { datasLists } = props;
 
   return (
-    <>
-      <ListLayout>
-        <h1>全国カフェピックアップ</h1>
-        <CommonLists datasLists={datasLists} page={"ssg"} />
-      </ListLayout>
-    </>
+    <ListLayout>
+      <h1>猫カフェピックアップ</h1>
+      <CommonLists datasLists={datasLists} page={"picup"} />
+    </ListLayout>
   );
-};
-
-export default index;
+}

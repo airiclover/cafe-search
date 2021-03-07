@@ -1,4 +1,6 @@
 .container {
   /* min-height: 100vh; */
   margin: 10px;
+  text-align: center;
+  color: rgb(30, 30, 30);
 }
