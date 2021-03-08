@@ -9,17 +9,7 @@ export function CommonLists(props) {
 
   return (
     <>
-      <div className={styles.titleWrap}>
-        <h1 className={styles.title}>{title}</h1>
-        <Image
-          src="/img/catfot.png"
-          alt="catfot logo"
-          loading="eager"
-          width={35}
-          height={35}
-          priority
-        />
-      </div>
+      <h1 className={styles.title}>{title}</h1>
       {datasLists.map((datasList, index) => {
         return (
           <Link href={`/${page}/${datasList.id}`} key={index}>

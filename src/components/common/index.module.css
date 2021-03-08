@@ -1,15 +1,6 @@
-.titleWrap {
-  display: flex;
-  margin-bottom: 20px;
-  padding: 10px 0;
-  border-top: 3px dotted #000;
-  border-bottom: 3px dotted #000;
-}
-
 .title {
   font-size: 32px;
-  margin: 0;
-  padding-right: 6px;
+  margin: 15px 0;
 }
 
 .container {
