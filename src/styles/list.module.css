@@ -1,7 +1,16 @@
+.container {
+  background-color: rgb(245, 245, 245);
+}
+
 .img {
   width: 100%;
   height: 260px;
   object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.letterWrap {
+  padding: 0 10px;
 }
 
 .shopName {
@@ -35,5 +44,6 @@
   width: 100%;
   height: 190px;
   margin-top: 20px;
+  border-radius: 0 0 10px 10px;
   border: 1px solid rgb(182, 182, 182);
 }

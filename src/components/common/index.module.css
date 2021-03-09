@@ -1,12 +1,14 @@
 .title {
   font-size: 32px;
-  margin: 15px 0;
+  margin: 8px 0;
+  letter-spacing: -1px;
+  font-family: "arial black", sans-serif;
 }
 
 .container {
   display: flex;
-  margin-top: 8px;
-  border: 1px solid rgb(222, 222, 222);
+  margin-top: 10px;
+  /* border: 1px solid rgb(240, 240, 240); */
   border-radius: 8px;
   color: rgb(30, 30, 30);
   height: 100px;

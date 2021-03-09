@@ -3,7 +3,10 @@
 }
 
 body {
-  background-color: rgb(245, 245, 245);
+  min-height: 100vh;
+  background-image: url("/img/BGimg.JPG");
+  backdrop-filter: blur(4px);
+  /* background-color: rgb(245, 245, 245); */
   font-family: sans-serif;
   margin: 0;
 }

@@ -5,8 +5,9 @@
   margin: 60px 0 40px;
   padding: 10px 45px;
   width: 175px;
-  background-color: rgb(243, 221, 198);
-  border: 1px solid rgb(243, 221, 198);
+  background-color: #fff;
+  /* background-color: rgb(243, 221, 198); */
+  /* border: 1px solid rgb(243, 221, 198); */
   line-height: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
   border-radius: 40px;

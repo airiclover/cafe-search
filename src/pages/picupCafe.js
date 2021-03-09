@@ -28,7 +28,7 @@ export default function PicupCafe(props) {
       <CommonLists
         datasLists={datasLists}
         page={"picup"}
-        title={"猫カフェpickup"}
+        title={"Pickup CatCafes"}
       />
     </ListLayout>
   );
