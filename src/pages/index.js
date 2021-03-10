@@ -17,7 +17,6 @@ export default function Home() {
           <Search />
         </a>
       </Link>
-      <br />
       <Link href="/picupCafe">
         <a>
           <Picup />

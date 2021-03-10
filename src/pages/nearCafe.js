@@ -24,7 +24,7 @@ const fetcher = () => {
       // jsonpのためaxiosにてデータフェッチ
       axios
         .get(
-          `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=35.669220&lng=139.761457&genre=G014&count=20&format=jsonp`,
+          `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=35.6483351&lng=139.7035235&genre=G014&count=20&format=jsonp`,
           // `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=39.669220&lng=139.761457&genre=G014&count=20&format=jsonp`,
           // `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${position?.coords?.latitude}&lng=${position?.coords?.longitude}&genre=G014&count=20&format=jsonp`,
           {
@@ -34,8 +34,12 @@ const fetcher = () => {
         .then((res) => {
           const jsonp = res.data;
           const data = jsonp.results.shop;
+          //   data.length === 0
+          //     ? alert("近くのカフェは見つかりませんでした。")
+          //     : resolve(data);
+          // });
           data.length === 0
-            ? alert("近くのカフェは見つかりませんでした。")
+            ? alert("近くのカフェは見つかりませんでした。", resolve(data))
             : resolve(data);
         });
     const onError = (err) => {
@@ -55,6 +59,7 @@ export default function NearCafe() {
   // (ページ遷移後もデータ取得+キャッシュ更新（Focus Revalidation）され、スクロール位置も保存される)
   const { data } = useSWR("default", fetcher);
   // const { data: data } = useSWR("default", fetcher);
+  console.log(data);
 
   return (
     <ListLayout>
@@ -62,7 +67,7 @@ export default function NearCafe() {
       {data ? (
         <CommonLists datasLists={data} page={"lists"} title={"Good Cafes"} />
       ) : (
-        "loading..."
+        <h2>loading...</h2>
       )}
     </ListLayout>
   );
