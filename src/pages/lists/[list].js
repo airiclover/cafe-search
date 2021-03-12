@@ -6,7 +6,7 @@ import styles from "../../styles/list.module.css";
 export async function getServerSideProps({ params }) {
   const id = params.list;
   const res = await fetch(
-    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&id=${id}&format=json`
+    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&id=${id}&format=json`
   );
   const json = await res.json();
   const lists = json.results.shop;

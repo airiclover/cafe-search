@@ -12,7 +12,6 @@ export default function Home() {
         <title>cafe-search</title>
       </Head>
       <Top />
-      {console.log(process.env.GREETING)}
       <Link href="/nearCafe">
         <a>
           <Search />

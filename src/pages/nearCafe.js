@@ -24,9 +24,9 @@ const fetcher = () => {
       // jsonpのためaxiosにてデータフェッチ
       axios
         .get(
-          `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=35.6483351&lng=139.7035235&genre=G014&count=20&format=jsonp`,
-          // `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=39.669220&lng=139.761457&genre=G014&count=20&format=jsonp`,
-          // `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=ed1b3ecc1ac15f32&lat=${position?.coords?.latitude}&lng=${position?.coords?.longitude}&genre=G014&count=20&format=jsonp`,
+          `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&lat=35.6483351&lng=139.7035235&genre=G014&count=20&format=jsonp`,
+          // `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&lat=39.669220&lng=139.761457&genre=G014&count=20&format=jsonp`,
+          // `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&lat=${position?.coords?.latitude}&lng=${position?.coords?.longitude}&genre=G014&count=20&format=jsonp`,
           {
             adapter: axiosJsonpAdapter,
           }
