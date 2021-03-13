@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Head from "next/head";
 import { MainLayout } from "../layouts/main/index";
 import { Top } from "../components/top/index";
@@ -12,16 +11,8 @@ export default function Home() {
         <title>cafe-search</title>
       </Head>
       <Top />
-      <Link href="/nearCafe">
-        <a>
-          <Search />
-        </a>
-      </Link>
-      <Link href="/picupCafe">
-        <a>
-          <Picup />
-        </a>
-      </Link>
+      <Search />
+      <Picup />
     </MainLayout>
   );
 }
