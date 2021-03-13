@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { ListLayout } from "../layouts/list/index";
 import { CommonLists } from "../components/common";
+import { Loading } from "../components/loading";
 
 export const getStaticProps = async () => {
   const keywords = "猫";
@@ -10,26 +10,31 @@ export const getStaticProps = async () => {
   const res = await fetch(
     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
   );
-  const dataListsJson = await res.json();
-  const datasLists = dataListsJson.results.shop;
+  const datasLists = await res.json();
+  const data = datasLists.results.shop;
 
   return {
     props: {
-      datasLists,
+      data,
     },
   };
 };
 
 export default function PicupCafe(props) {
-  const { datasLists } = props;
+  const { data } = props;
 
   return (
     <ListLayout>
-      <CommonLists
-        datasLists={datasLists}
-        page={"picup"}
-        title={"Pickup CatCafes"}
-      />
+      {/* dataが取得できていれば、CommonListsコンポーネントを表示、なければ「loading...」 */}
+      {data ? (
+        <CommonLists
+          datasLists={data}
+          page={"picup"}
+          title={"Pickup CatCafes"}
+        />
+      ) : (
+        <Loading />
+      )}
     </ListLayout>
   );
 }
