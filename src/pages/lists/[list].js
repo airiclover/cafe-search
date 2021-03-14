@@ -66,7 +66,7 @@ export default function List(lists) {
             <p className={styles.data}>{lists.lists[0].address}</p>
           </div>
         </div>
-        <iframe className={styles.iframe} src={`${URL}${lat},${lng}`}></iframe>
+        <iframe className={styles.iframe} src={`${URL}${lat},${lng}`} />
       </div>
     </ListLayout>
   );

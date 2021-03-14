@@ -5,8 +5,6 @@ import Link from "next/link";
 export function CommonLists(props) {
   const { datasLists, page, title } = props;
 
-  console.log(page);
-
   return (
     <>
       <h1 className={styles.title}>{title}</h1>
