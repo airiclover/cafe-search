@@ -14,6 +14,8 @@ export async function getStaticPaths() {
 
   const paths = datas.map((data) => `/picup/${data.id}`);
 
+  console.log(paths);
+
   return {
     paths,
     fallback: false,
@@ -21,6 +23,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  console.log(params);
+
   const id = params.picup;
 
   const res = await fetch(
