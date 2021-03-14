@@ -4,11 +4,14 @@ import styles from "../../styles/list.module.css";
 
 export async function getStaticPaths() {
   const keywords = "猫";
-  const utf8Key = unescape(encodeURIComponent(keywords));
+  // const utf8Key = unescape(encodeURIComponent(keywords));
+  const utf8Key = encodeURIComponent(keywords);
   console.log(utf8Key);
+  console.log(keywords);
 
   const res = await fetch(
     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
+    // `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${keywords}&count=20&format=json`
   );
   const datasLists = await res.json();
   const datas = datasLists.results.shop;
