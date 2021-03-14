@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 export const Search = () => {
   return (
     <Link href="/nearCafe">
-      <a>
+      <a className={styles.container}>
         <button className={styles.btn}>
           <div className={styles.container}>
             <div className={styles.btnMsg}>

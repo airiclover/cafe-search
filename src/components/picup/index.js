@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 export const Picup = () => {
   return (
     <Link href="/picupCafe">
-      <a>
+      <a className={styles.container}>
         <div className={styles.btnWrap}>
           <div className={styles.title}>
             <span className={styles.spanCat}>猫</span>カフェ特集

@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100&display=swap");
 
-.btn {
-  display: inline-block;
+.container {
   width: 240px;
   height: 240px;
   margin: 0 auto;
-  /* padding: 10px 20px; */
+}
+
+.btn {
+  display: inline-block;
+  margin: 0 auto;
   font-size: 25px;
   font-family: "M PLUS 1p", sans-serif;
   color: rgb(90, 90, 90);

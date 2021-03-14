@@ -1,13 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100&display=swap");
 
+.container {
+  width: 265px;
+  margin: 60px auto 40px;
+}
+
 .btnWrap {
   display: inline-block;
-  margin: 60px 0 40px;
   padding: 10px 45px;
   width: 175px;
   background-color: #fff;
-  /* background-color: rgb(243, 221, 198); */
-  /* border: 1px solid rgb(243, 221, 198); */
   line-height: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
   border-radius: 40px;
