@@ -2,6 +2,24 @@ import Image from "next/image";
 import { ListLayout } from "../../layouts/list/index";
 import styles from "../../styles/list.module.css";
 
+export async function getStaticPaths() {
+  const keywords = "猫";
+  const utf8Key = unescape(encodeURIComponent(keywords));
+
+  const res = await fetch(
+    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
+  );
+  const datasLists = await res.json();
+  const datas = datasLists.results.shop;
+
+  const paths = datas.map((data) => `/picup/${data.id}`);
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
 export async function getStaticProps({ params }) {
   const id = params.picup;
 
@@ -14,15 +32,7 @@ export async function getStaticProps({ params }) {
   return { props: { list }, revalidate: 60 * 60 };
 }
 
-export const getStaticPaths = async () => ({
-  paths: [],
-  fallback: true,
-});
-
 export default function List(list) {
-  console.log("============hello==============");
-  console.log(list);
-
   const URL = "https://maps.google.co.jp/maps?output=embed&q=";
   const lat = list.list.lat;
   const lng = list.list.lng;

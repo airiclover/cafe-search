@@ -4,8 +4,7 @@ import { Loading } from "../components/loading";
 
 export const getStaticProps = async () => {
   const keywords = "猫";
-  const key = Math.floor(Math.random() * keywords.length);
-  const utf8Key = unescape(encodeURIComponent(keywords[key]));
+  const utf8Key = unescape(encodeURIComponent(keywords));
 
   const res = await fetch(
     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
