@@ -10,7 +10,8 @@ export async function getStaticProps({ params }) {
   );
   const dataListsJson = await res.json();
   const lists = dataListsJson.results.shop;
-  return { props: { lists }, revalidate: 60 * 60 };
+  const list = lists[0];
+  return { props: { list }, revalidate: 60 * 60 };
 }
 
 export const getStaticPaths = async () => ({
@@ -18,17 +19,20 @@ export const getStaticPaths = async () => ({
   fallback: true,
 });
 
-export default function List(lists) {
+export default function List(list) {
+  console.log("============hello==============");
+  console.log(list);
+
   const URL = "https://maps.google.co.jp/maps?output=embed&q=";
-  const lat = lists.lists[0].lat;
-  const lng = lists.lists[0].lng;
+  const lat = list.list.lat;
+  const lng = list.list.lng;
 
   return (
     <ListLayout>
       <div className={styles.container}>
-        <img src={lists.lists[0].photo.pc.l} alt="img" className={styles.img} />
+        <img src={list.list.photo.pc.l} alt="img" className={styles.img} />
         <div className={styles.letterWrap}>
-          <h1 className={styles.shopName}>{lists.lists[0].name}</h1>
+          <h1 className={styles.shopName}>{list.list.name}</h1>
           <div className={styles.titleWrap}>
             <Image
               src="/img/map-min-pin.svg"
@@ -38,7 +42,7 @@ export default function List(lists) {
               height={12}
               priority
             />
-            <p className={styles.commonTitle}>{lists.lists[0].mobile_access}</p>
+            <p className={styles.commonTitle}>{list.list.mobile_access}</p>
           </div>
 
           <div className={styles.commonWrap}>
@@ -53,7 +57,7 @@ export default function List(lists) {
               />
               <p className={styles.commonTitle}>open</p>
             </div>
-            <p className={styles.data}>{lists.lists[0].open}</p>
+            <p className={styles.data}>{list.list.open}</p>
           </div>
 
           <div className={styles.commonWrap}>
@@ -68,7 +72,7 @@ export default function List(lists) {
               />
               <p className={styles.commonTitle}>address</p>
             </div>
-            <p className={styles.data}>{lists.lists[0].address}</p>
+            <p className={styles.data}>{list.list.address}</p>
           </div>
         </div>
         <iframe className={styles.iframe} src={`${URL}${lat},${lng}`} />
