@@ -2,7 +2,8 @@ import { ListLayout } from "../layouts/list/index";
 import { CommonLists } from "../components/common";
 import { Loading } from "../components/loading";
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
+  // export const getStaticProps = async () => {
   const keywords = "猫";
   const utf8Key = unescape(encodeURIComponent(keywords));
 
@@ -17,7 +18,7 @@ export const getStaticProps = async () => {
       data,
     },
   };
-};
+}
 
 export default function PicupCafe(props) {
   const { data } = props;

@@ -5,6 +5,7 @@ import styles from "../../styles/list.module.css";
 export async function getStaticPaths() {
   const keywords = "猫";
   const utf8Key = unescape(encodeURIComponent(keywords));
+  console.log(utf8Key);
 
   const res = await fetch(
     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
@@ -13,7 +14,6 @@ export async function getStaticPaths() {
   const datas = datasLists.results.shop;
 
   const paths = datas.map((data) => `/picup/${data.id}`);
-
   console.log(paths);
 
   return {
@@ -35,6 +35,18 @@ export async function getStaticProps({ params }) {
   const list = lists[0];
   return { props: { list }, revalidate: 60 * 60 };
 }
+
+// export async function getServerSideProps({ params }) {
+//   console.log(params);
+//   const id = params.picup;
+//   const res = await fetch(
+//     `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&id=${id}&format=json`
+//   );
+//   const dataListsJson = await res.json();
+//   const lists = dataListsJson.results.shop;
+//   const list = lists[0];
+//   return { props: { list } };
+// }
 
 export default function List(list) {
   const URL = "https://maps.google.co.jp/maps?output=embed&q=";
