@@ -14,6 +14,8 @@ export async function getStaticPaths() {
   const datasLists = await res.json();
   const datas = datasLists.results.shop;
 
+  console.log(datas[0].name);
+  console.log(datas[19].name);
   const paths = datas.map((data) => `/picup/${data.id}`);
   console.log(paths);
 
