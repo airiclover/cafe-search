@@ -20,11 +20,12 @@ export async function getStaticPaths() {
   const paths = datas.map((data) => {
     return {
       params: {
-        // picup: `${data.id}`,
-        picup: data.id,
+        picup: `${data.id}`,
       },
     };
   });
+  console.log(paths);
+  console.log("hello");
 
   return {
     paths,

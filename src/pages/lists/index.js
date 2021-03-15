@@ -7,9 +7,9 @@
 import useSWR from "swr";
 import axios from "axios";
 import axiosJsonpAdapter from "axios-jsonp";
-import { ListLayout } from "../layouts/list/index";
-import { CommonLists } from "../components/common";
-import { Loading } from "../components/loading";
+import { ListLayout } from "../../layouts/list/index";
+import { CommonLists } from "../../components/common";
+import { Loading } from "../../components/loading";
 
 const fetcher = () => {
   // getCurrentPosition()は返り値なしのためPromiseで実装し、resolveで結果を取得する
@@ -42,7 +42,7 @@ const fetcher = () => {
   });
 };
 
-export default function NearCafe() {
+export default function Lists() {
   // 一度取得したデータをクライアント側でキャッシュしてくれるためuseSWRにて実装
   // (ページ遷移後もデータ取得+キャッシュ更新（Focus Revalidation）され、スクロール位置も保存される)
   const { data } = useSWR("default", fetcher);

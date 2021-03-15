@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 
 export const Picup = () => {
   return (
-    <Link href="/picupCafe">
+    <Link href="/picup">
       <a className={styles.container}>
         <div className={styles.btnWrap}>
           <div className={styles.title}>

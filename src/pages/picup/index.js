@@ -1,6 +1,6 @@
-import { ListLayout } from "../layouts/list/index";
-import { CommonLists } from "../components/common";
-import { Loading } from "../components/loading";
+import { ListLayout } from "../../layouts/list/index";
+import { CommonLists } from "../../components/common";
+import { Loading } from "../../components/loading";
 
 export async function getStaticProps() {
   // export const getStaticProps = async () => {
