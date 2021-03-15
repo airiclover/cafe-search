@@ -8,7 +8,7 @@ export async function getStaticProps() {
   const utf8Key = encodeURIComponent(keywords);
 
   const res = await fetch(
-    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
+    `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
   );
   const datasLists = await res.json();
   const data = datasLists.results.shop;

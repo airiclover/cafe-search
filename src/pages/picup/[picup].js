@@ -9,12 +9,13 @@ export async function getStaticPaths() {
   console.log(utf8Key);
 
   const res = await fetch(
-    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
+    `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
   );
   const datasLists = await res.json();
-  // console.log(datasLists);
+  console.log(datasLists);
+
   const datas = datasLists.results.shop;
-  // console.log(datas);
+  console.log(datas);
 
   // const paths = datas.map((data) => `/picup/${data.id}`);
   const paths = datas.map((data) => {
@@ -37,7 +38,7 @@ export async function getStaticProps({ params }) {
   const id = params.picup;
 
   const res = await fetch(
-    `http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&id=${id}&format=json`
+    `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&id=${id}&format=json`
   );
   const dataListsJson = await res.json();
   const lists = dataListsJson.results.shop;
