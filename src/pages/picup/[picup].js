@@ -5,8 +5,6 @@ import styles from "../../styles/list.module.css";
 export async function getStaticPaths() {
   const keywords = "猫";
   const utf8Key = encodeURIComponent(keywords);
-  console.log(keywords);
-  console.log(utf8Key);
 
   const res = await fetch(
     `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
@@ -14,7 +12,6 @@ export async function getStaticPaths() {
   const datasLists = await res.json();
   const datas = datasLists.results.shop;
 
-  // const paths = datas.map((data) => `/picup/${data.id}`);
   const paths = datas.map((data) => {
     return {
       params: {

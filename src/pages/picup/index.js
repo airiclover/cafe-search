@@ -1,6 +1,5 @@
 import { ListLayout } from "../../layouts/list/index";
 import { CommonLists } from "../../components/common";
-import { Loading } from "../../components/loading";
 
 export async function getStaticProps() {
   // export const getStaticProps = async () => {
@@ -25,16 +24,7 @@ export default function PicupCafe(props) {
 
   return (
     <ListLayout>
-      {/* dataが取得できていれば、CommonListsコンポーネントを表示、なければ「loading...」 */}
-      {data ? (
-        <CommonLists
-          datasLists={data}
-          page={"picup"}
-          title={"Pickup CatCafes"}
-        />
-      ) : (
-        <Loading />
-      )}
+      <CommonLists datasLists={data} page={"picup"} title={"Pickup CatCafes"} />
     </ListLayout>
   );
 }
