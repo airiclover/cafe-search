@@ -12,10 +12,7 @@ export async function getStaticPaths() {
     `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${process.env.API_KEY}&genre=G014&keyword=${utf8Key}&count=20&format=json`
   );
   const datasLists = await res.json();
-  console.log(datasLists);
-
   const datas = datasLists.results.shop;
-  console.log(datas);
 
   // const paths = datas.map((data) => `/picup/${data.id}`);
   const paths = datas.map((data) => {

@@ -1,5 +1,7 @@
 .container {
-  background-color: rgb(245, 245, 245);
+  margin: 0 auto;
+  max-width: 500px;
+  background-color: #fff;
   border-radius: 10px;
 }
 

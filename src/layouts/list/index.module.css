@@ -1,4 +1,6 @@
 .container {
   padding: 10px;
   color: rgb(30, 30, 30);
+  background-image: url("/img/catBK.JPG");
+  min-height: 100vh;
 }

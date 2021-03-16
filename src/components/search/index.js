@@ -6,7 +6,7 @@ export const Search = () => {
   return (
     <Link href="/lists">
       <a className={styles.container}>
-        <button className={styles.btn}>
+        <div className={styles.btn}>
           <div className={styles.container}>
             <div className={styles.btnMsg}>
               近くの
@@ -24,7 +24,7 @@ export const Search = () => {
               priority
             />
           </div>
-        </button>
+        </div>
       </a>
     </Link>
   );
