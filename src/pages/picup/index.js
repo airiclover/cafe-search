@@ -2,7 +2,6 @@ import { ListLayout } from "../../layouts/list/index";
 import { CommonLists } from "../../components/common";
 
 export async function getStaticProps() {
-  // export const getStaticProps = async () => {
   const keywords = "猫";
   const utf8Key = encodeURIComponent(keywords);
 
@@ -16,6 +15,7 @@ export async function getStaticProps() {
     props: {
       data,
     },
+    revalidate: 60 * 60,
   };
 }
 
