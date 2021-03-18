@@ -21,13 +21,12 @@ export async function getStaticPaths() {
   console.log(paths);
 
   return {
-    paths,
-    fallback: false,
+    paths: [],
+    fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   const id = params.picup;
 
   const res = await fetch(
